@@ -41,13 +41,13 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)
    wndClass.hCursor        = LoadCursor(NULL, IDC_ARROW);
    wndClass.hbrBackground  = (HBRUSH)GetStockObject(WHITE_BRUSH);
    wndClass.lpszMenuName   = NULL;
-   wndClass.lpszClassName  = TEXT("GettingStarted");
+   wndClass.lpszClassName  = TEXT("Game");
    
    RegisterClass(&wndClass);
    
    hwnd = CreateWindow(
-      TEXT("GettingStarted"),   // window class name
-      TEXT("Getting Started"),  // window caption
+      TEXT("Game"),  		// window class name
+      TEXT("Game"),  		// window caption
       WS_OVERLAPPEDWINDOW,      // window style
       CW_USEDEFAULT,            // initial x position
       CW_USEDEFAULT,            // initial y position
