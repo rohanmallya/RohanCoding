@@ -19,3 +19,4 @@ void MrGuy::shoot(void)
 {
 
 }
+DECL_INIT_FN(MrGuy);
