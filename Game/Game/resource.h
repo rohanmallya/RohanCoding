@@ -4,6 +4,12 @@
 
 #include "Windows.h"
 
+#define IDC_STATIC	-1
+
+//Bitmaps
+#define IDB_HEAD	500
+
+
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED

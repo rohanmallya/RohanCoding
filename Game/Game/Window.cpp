@@ -3,6 +3,22 @@
 using namespace Gdiplus;
 #pragma comment(lib, "Gdiplus.lib")
 
+HBITMAP head = NULL;
+
+VOID startGame(HDC hdc, HWND hwnd)
+{
+	BITMAP bm;
+
+	HDC hdcMem = CreateCompatibleDC(hdc);
+
+	GetObject(head, sizeof(bm), &bm);
+	SelectObject(hdcMem, head);
+	
+	BitBlt(hdc, 200, 200, bm.bmWidth, bm.bmHeight, hdcMem, 0, 0, SRCCOPY);
+
+	DeleteDC(hdcMem);
+}
+
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)
@@ -64,16 +80,18 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
    {
 	case WM_LBUTTONDOWN:
 	{
-	
+		
 	}
 	break;
 
 	case WM_CREATE:
 		SetWindowPos(hwnd, HWND_TOP, 0, 0, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), SWP_FRAMECHANGED);
+		head = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_HEAD));
 	break;
 	
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
+		startGame(hdc, hwnd);
 		EndPaint(hwnd, &ps);
 	break;
 
